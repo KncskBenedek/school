@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/api/tasks',[TaskController::class,'index']);
+
+
+Route::get('/api/tasks/{id}',[TaskController::class,'show']);
+
+Route::post('/api/tasks',[TaskController::class,'store']);
+
+Route::put('/api/task/{id}',[TaskController::class,'update']);
+Route::delete('/api/task/{id}',[TaskController::class,'destroy']);
+Route::get('/api/list',[TaskController::class,'listView']);
+Route::get('/task/edit/{id}',[TaskController::class,'editView']);
+
+Route::get('/task/new',[TaskController::class,'newView']);
