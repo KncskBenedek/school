@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +34,16 @@ Route::get('/api/list',[TaskController::class,'listView']);
 Route::get('/task/edit/{id}',[TaskController::class,'editView']);
 
 Route::get('/task/new',[TaskController::class,'newView']);
+
+
+//----------------------
+
+
+Route::delete('/api/user/delete/{id}',[UserController::class, 'delete'] );
+Route::get('/api/user/{id}', [UserController::class, 'getUser']);
+Route::get('/api/users/list', [UserController::class, 'listView']);
+Route::put('/api/user/update/{id}', [UserController::class, 'update']);
+Route::get('/api/user/edit/{id}', [UserController::class, 'editView']);
+
+Route::get('/api/user', [UserController::class, 'newView']);
+Route::post('/api/user/new', [UserController::class, 'store']);
